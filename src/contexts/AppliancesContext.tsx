@@ -33,12 +33,12 @@ export const AppliancesProvider = ({children}: PropsWithChildren) => {
         addAppliance: (appliance: Appliance) => {
             const newAppliances= [...appliances, appliance]
             setAppliances(newAppliances)
-            storeAppliances(appliances)
+            storeAppliances(newAppliances)
         },
         removeAppliance: (id: string) => {
             const newAppliances = appliances.filter(a => a.id !== id);
             setAppliances(newAppliances);
-            storeAppliances(appliances)
+            storeAppliances(newAppliances)
         }
     }}>
         {children}
