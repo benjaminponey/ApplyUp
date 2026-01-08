@@ -1,0 +1,170 @@
+.applications-list-container {
+    background: transparent;
+    /* Changed from container style to transparent wrapper for grid */
+    box-shadow: none;
+    backdrop-filter: none;
+    border: none;
+    padding: 0;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.applications-list-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    background: linear-gradient(90deg, #646cff, #9089fc);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.badge-count {
+    background: #646cff;
+    color: white;
+    font-size: 0.9rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 99px;
+    vertical-align: middle;
+}
+
+.applications-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.application-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: white;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+}
+
+.application-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+    border-color: rgba(100, 108, 255, 0.3);
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.applicant-name {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: white;
+}
+
+.job-title {
+    color: rgba(255, 255, 255, 0.8);
+    /* Changed to rgba for better visibility on dark bg */
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.status-badge {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-new {
+    background-color: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+}
+
+.status-reviewed {
+    background-color: rgba(234, 179, 8, 0.2);
+    color: #facc15;
+}
+
+.status-interviewed {
+    background-color: rgba(168, 85, 247, 0.2);
+    color: #c084fc;
+}
+
+.status-rejected {
+    background-color: rgba(239, 68, 68, 0.2);
+    color: #f87171;
+}
+
+.card-body {
+    flex: 1;
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.contact-info {
+    margin-bottom: 1rem;
+    line-height: 1.6;
+}
+
+.contact-info strong {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
+    margin-right: 4px;
+}
+
+.message-preview {
+    font-style: italic;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.8rem;
+    border-radius: 6px;
+    margin-bottom: 1rem;
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
+}
+
+
+.action-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+}
+
+/* Added styles for delete button */
+.delete-btn {
+    border-color: rgba(239, 68, 68, 0.4);
+    color: rgba(239, 68, 68, 0.9);
+}
+
+.delete-btn:hover {
+    background: rgba(239, 68, 68, 0.1);
+    border-color: #ef4444;
+}
+
+.card-actions {
+    margin-top: auto;
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.5rem;
+}

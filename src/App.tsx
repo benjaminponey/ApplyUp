@@ -1,35 +1,39 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { CounterButton } from './components/CounterButton'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import './App.css';
+import { ApplicationForm } from './components/ApplicationForm';
+import { ApplicationsList } from './components/ApplicationsList';
+import { ApplicationDetails } from './components/ApplicationDetails';
+import { ApplicationsProvider } from './Contexts/ApplicationsContext';
 
 function App() {
-  const [count, setCount] = useState(0)
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <CounterButton count={count} increment={() => {
-          setCount(oldValue => oldValue + 1)
-        }} />
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    return (
+        <ApplicationsProvider>
+            <Router>
+                <div className="app-container">
+                    <nav className="main-nav">
+                        <div className="nav-logo">ApplyUp</div>
+                        <div className="nav-links">
+                            <Link to="/" className="nav-link">Candidater</Link>
+                            <Link to="/list" className="nav-link">Candidatures</Link>
+                        </div>
+                    </nav>
+
+                    <div className="page-content">
+                        <Routes>
+                            <Route path="/" element={
+                                <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                                    <h1 style={{ marginBottom: '2rem' }}>Rejoignez-nous</h1>
+                                    <ApplicationForm />
+                                </div>
+                            } />
+                            <Route path="/list" element={<ApplicationsList />} />
+                            <Route path="/application/:id" element={<ApplicationDetails />} />
+                        </Routes>
+                    </div>
+                </div>
+            </Router>
+        </ApplicationsProvider>
+    );
 }
 
-export default App
+export default App;
