@@ -1,11 +1,8 @@
 import express from 'express';
 import cors from 'cors';
-import { appliancesRoutes } from './modules/appliances/appliancesRoutes';
-import Joi  from "joi"
 import {createValidator} from "express-joi-validation"
-
 export const validator = createValidator()
-
+import { appliancesRoutes } from './modules/appliances/appliancesRoutes';
 const app = express()
 
 app.use(cors()) // Enable CORS for all routes for dissmissing CORS errors during development
