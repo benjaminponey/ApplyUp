@@ -1,17 +1,8 @@
 import { useParams } from "react-router-dom";
-import { useAppliances } from "../contexts/AppliancesContext";
 
 export const ApplianceDetails = () => {
   const { id } = useParams();
-  /*
-  Example using useSearchParams instead of useParams
-  const [params, setParams] = useSearchParams();
-  const id = params.get("id")
-  */
-  const { appliances } = useAppliances();
-
-  const appliance = appliances.find((a) => a.id === id);
-
+  const appliance = undefined
   if (!appliance) {
     return <div>Appliance not found</div>;
   }

@@ -1,9 +1,21 @@
 import { Link } from "react-router-dom";
-import { useAppliances } from "../contexts/AppliancesContext";
+import { useFetch } from "../hooks/useFetch";
+import { useAppliances } from "../hooks/useAppliances";
+
+export type Appliance = {
+  id: string;
+  name: string;
+  phoneNumber: string;
+  job: string;
+  description: string;
+};
 
 export const AppliancesList = () => {
-  const { appliances, removeAppliance } = useAppliances();
-
+  const {
+    data: appliances = [],
+    error,
+    isLoading,
+  } = useAppliances()
 
   return (
     <div className="flex flex-col">
@@ -18,10 +30,14 @@ export const AppliancesList = () => {
             <p className="mb-1">
               <strong>Phone Number:</strong> {appliance.phoneNumber}
             </p>
-            <button className="btn btn-error" onClick={(e) => {
-              e.preventDefault()
-              removeAppliance(appliance.id)
-            }}>Supprimer</button>
+            <button
+              className="btn btn-error"
+              onClick={(e) => {
+                e.preventDefault();
+              }}
+            >
+              Supprimer
+            </button>
           </div>
         </Link>
       ))}

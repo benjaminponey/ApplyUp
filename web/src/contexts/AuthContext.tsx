@@ -1,17 +1,9 @@
 import { createContext, PropsWithChildren, useContext, useState } from "react";
 
-export type UserRole = 'candidate' | 'interviewer'
-
-export type User = {
-  id: string;
-  email: string;
-  role: UserRole;
-  password: string;
-};
 
 export type AuthContextType = {
-  user?: User;
-  login: (email: string, password: string) => boolean;
+  token?: string;
+  login: (email: string, password: string) => void;
   logout: () => void;
 };
 
@@ -20,42 +12,32 @@ export const AuthContext = createContext<AuthContextType>({
   logout: () => {},
 });
 
-const USERS: User[] = [
-  {
-    id: "1",
-    email: "user@example.com",
-    role: "candidate",
-    password: "password123",
-  },
-  {
-    id: "2",
-    email: "admin@example.com",
-    role: "interviewer",
-    password: "password123",
-  },
-];
-
 export const AuthProvider = ({ children }: PropsWithChildren) => {
 
-  const [user, setUser] = useState<User>();
+  const [token, setToken] = useState<string>();
+
+  
+  const login = async (email: string, password: string) => {
+   const response = await fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ username: email, password }),
+    })
+    const json = await response.json()
+    setToken(json.token)
+  }
+
 
   return (
     <AuthContext.Provider
       value={{
-        user,
+        token,
         logout: () => {
-          setUser(undefined);
+          setToken(undefined);
         },
-        login: (email: string, password: string) => {
-          const user = USERS.find(
-            (u) => u.email === email && u.password === password
-          );
-          if (user) {
-            setUser(user);
-            return true;
-          }
-          return false;
-        },
+        login,
       }}
     >
       {children}

@@ -15,7 +15,7 @@ export const LoginForm = () => {
         e.preventDefault()
         login(email, password)
       }}>
-        <input name="email" type="email" placeholder="Votre email" value={email} onChange={e => setEmail(e.target.value)} />
+        <input name="email" placeholder="Votre email" value={email} onChange={e => setEmail(e.target.value)} />
         <input name="password" type="password" placeholder="Votre mot de passe" value={password} onChange={e => setPassword(e.target.value)} />
         <button className="btn" type="submit">Se connecter</button>
       </form>

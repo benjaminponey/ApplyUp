@@ -1,6 +1,5 @@
 import { PropsWithChildren, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAppliances } from "../contexts/AppliancesContext";
 
 type JobId = 'front' | 'back';
 
@@ -21,20 +20,11 @@ export const ApplyForm = () => {
 
   const navigate = useNavigate();
 
-  const { addAppliance } = useAppliances();
-
   return (
     <div>
       <form
         onSubmit={(e) => {
           e.preventDefault();
-          addAppliance({
-            id: Date.now().toString(),
-            name,
-            phoneNumber: "",
-            job: jobId,
-            description: "",
-          });
           navigate("/list");
         }}
         className="flex flex-col gap-4"
